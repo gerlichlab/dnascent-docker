@@ -18,12 +18,12 @@ RUN apt-get install git wget libz-dev libbz2-dev liblzma-dev -y
 
 # clone repo
 
-RUN cd /tmp && \
+RUN cd / && mkdir dnascent && cd /dnascent && \
     git clone --recursive https://github.com/MBoemo/DNAscent.git
 
 # compile hdf5
 
-RUN cd /tmp/DNAscent &&\
+RUN cd /dnascent/DNAscent &&\
     wget https://support.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8/hdf5-1.8.14/src/hdf5-1.8.14.tar.gz; \
     tar -xzf hdf5-1.8.14.tar.gz || exit 255; \
     cd hdf5-1.8.14 && \
@@ -32,7 +32,7 @@ RUN cd /tmp/DNAscent &&\
 
 # download tensorflow
 
-RUN cd /tmp/DNAscent &&\
+RUN cd /dnascent/DNAscent &&\
     mkdir tensorflow; \
     cd tensorflow; \
     wget https://storage.googleapis.com/tensorflow/libtensorflow/libtensorflow-gpu-linux-x86_64-1.15.0.tar.gz; \
@@ -40,9 +40,9 @@ RUN cd /tmp/DNAscent &&\
 
 # compile DNAscent
 
-RUN cd /tmp/DNAscent &&\
+RUN cd /dnascent/DNAscent &&\
     make
 
 # Add to path
 
-ENV PATH="${PATH}:/tmp/DNAscent/bin"
+ENV PATH="${PATH}:/dnascent/DNAscent/bin"
