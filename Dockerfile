@@ -45,4 +45,4 @@ RUN cd /tmp/DNAscent &&\
 
 # Add to path
 
-RUN PATH=${PATH}:/tmp/DNAscent/bin
+ENV PATH="${PATH}:/tmp/DNAscent/bin"
