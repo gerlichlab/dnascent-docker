@@ -19,7 +19,8 @@ RUN apt-get install git wget libz-dev libbz2-dev liblzma-dev -y
 # clone repo
 
 RUN cd / && mkdir dnascent && cd /dnascent && \
-    git clone --recursive https://github.com/MBoemo/DNAscent.git
+    git clone --recursive https://github.com/MBoemo/DNAscent.git --branch 3.1.2
+
 
 # download hdf5 compression library
 
